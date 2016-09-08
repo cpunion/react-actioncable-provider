@@ -27,7 +27,7 @@ In some UI screen:
 
 ```jsx
 import React, { Component, PropTypes } from 'react'
-import ActionCable from 'react-actioncable-provider'
+import ActionCable from 'actioncable'
 
 export default class ChatRoom extends Component {
     static contextTypes = {
