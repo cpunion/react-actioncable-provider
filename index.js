@@ -1,29 +1,28 @@
 var React = require('react')
 var ActionCable = require('actioncable')
-const { Component, PropTypes } = React
 
-class ActionCableProvider extends Component {
-  getChildContext () {
+var ActionCableProvider = React.createClass({
+  getChildContext: function () {
     return {
       cable: this.cable
     }
-  }
+  },
 
-  componentWillMount () {
+  componentWillMount: function () {
     if (this.props.cable) {
       this.cable = this.props.cable
     } else {
       this.cable = ActionCable.createConsumer(this.props.url)
     }
-  }
+  },
 
-  componentWillUnmount () {
+  componentWillUnmount: function () {
     if (!this.props.cable && this.cable) {
       this.cable.disconnect()
     }
-  }
+  },
 
-  componentWillReceiveProps (nextProps) {
+  componentWillReceiveProps: function (nextProps) {
     // Props not changed
     if (this.props.cable === nextProps.cable &&
         this.props.url === nextProps.url) {
@@ -35,21 +34,21 @@ class ActionCableProvider extends Component {
 
     // create or assign cable
     this.componentWillMount()
-  }
+  },
 
-  render () {
+  render: function () {
     return this.props.children
   }
-}
+})
 
 ActionCableProvider.propTypes = {
-  cable: PropTypes.object,
-  url: PropTypes.string,
-  children: PropTypes.any
+  cable: React.PropTypes.object,
+  url: React.PropTypes.string,
+  children: React.PropTypes.any
 }
 
 ActionCableProvider.childContextTypes = {
-  cable: PropTypes.object.isRequired
+  cable: React.PropTypes.object.isRequired
 }
 
 module.exports = ActionCableProvider
