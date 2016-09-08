@@ -12,10 +12,11 @@ In outer container:
 
 ```jsx
 import { ActionCableProvider } from 'react-actioncable-provider'
+const cable = ActionCable.createConsumer('ws://localhost:3000/cable')
 
 export default function Container (props) {
     return (
-        <ActionCableProvider url='ws://localhost:3000/cable'>
+        <ActionCableProvider cable={cable}>
             <MyApp />
         </ActionCableProvider>
     )
