@@ -23,6 +23,20 @@ export default function Container (props) {
 }
 ```
 
+You can also use like below:
+
+```
+<ActionCableProvider url='ws://localhost:3000/cable'>
+</ActionCableProvider>
+```
+
+Or connection with default endpoint:
+
+```
+<ActionCableProvider>
+</ActionCableProvider>
+```
+
 In some UI screen:
 
 ```jsx
