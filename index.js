@@ -1,15 +1,7 @@
-import React, { Component, PropTypes } from 'react'
+var React = require('react')
+const { Component, PropTypes } = React
 
-export default class ActionCableProvider extends Component {
-  static propTypes = {
-    cable: PropTypes.object.isRequired,
-    children: PropTypes.any
-  };
-
-  static childContextTypes = {
-    cable: PropTypes.object.isRequired
-  };
-
+class ActionCableProvider extends Component {
   getChildContext () {
     return {
       cable: this.props.cable
@@ -20,3 +12,14 @@ export default class ActionCableProvider extends Component {
     return this.props.children
   }
 }
+
+ActionCableProvider.propTypes = {
+  cable: PropTypes.object.isRequired,
+  children: PropTypes.any
+}
+
+ActionCableProvider.childContextTypes = {
+  cable: PropTypes.object.isRequired
+}
+
+module.exports = ActionCableProvider
