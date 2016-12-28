@@ -67,3 +67,7 @@ export default class ChatRoom extends Component {
     // ... Other code
 }
 ```
+
+# Use in React Native
+
+See https://github.com/cpunion/react-native-actioncable
