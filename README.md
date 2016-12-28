@@ -3,7 +3,7 @@ ActionCable Provider for React.
 # Install
 
 ```
-npm install --save react-actioncabl-providere
+npm install --save react-actioncable-provider
 ```
 
 # Usage
