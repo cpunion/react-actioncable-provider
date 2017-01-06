@@ -1,5 +1,11 @@
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
 var React = require('react')
-var ActionCable = require('actioncable')
+var actioncable = require('actioncable')
 
 var ActionCableProvider = React.createClass({
   getChildContext: function () {
@@ -12,7 +18,7 @@ var ActionCableProvider = React.createClass({
     if (this.props.cable) {
       this.cable = this.props.cable
     } else {
-      this.cable = ActionCable.createConsumer(this.props.url)
+      this.cable = actioncable.createConsumer(this.props.url)
     }
   },
 
@@ -51,4 +57,53 @@ ActionCableProvider.childContextTypes = {
   cable: React.PropTypes.object.isRequired
 }
 
-module.exports = ActionCableProvider
+var ActionCable = React.createClass({
+  componentDidMount () {
+    const self = this
+    this.cable = this.context.cable.subscriptions.create(
+      this.props.channel,
+      {
+        received (data) {
+          if (self.cable) {
+            self.props.onReceived(data)
+          }
+        }
+      }
+    )
+  },
+
+  componentWillUnmount () {
+    if (this.cable) {
+      this.context.cable.subscriptions.remove(this.cable)
+      this.cable = null
+    }
+  },
+
+  send (data) {
+    if (!this.cable) {
+      throw new Error('ActionCable component unloaded')
+    }
+
+    this.cable.send(data)
+  },
+
+  perform (action, data) {
+    if (!this.cable) {
+      throw new Error('ActionCable component unloaded')
+    }
+
+    this.cable.perform(action, data)
+  },
+
+  render: function () {
+    return null
+  }
+})
+
+ActionCable.contextTypes = {
+  cable: React.PropTypes.object.isRequired
+}
+
+exports.ActionCable = ActionCableProvider.ActionCable = ActionCable
+
+exports.default = module.exports = ActionCableProvider

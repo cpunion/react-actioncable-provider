@@ -8,7 +8,21 @@ npm install --save react-actioncable-provider
 
 # Usage
 
-In outer container:
+## In outer container:
+
+```
+<ActionCableProvider>
+</ActionCableProvider>
+```
+
+You can also use following code to specify actioncable url:
+
+```
+<ActionCableProvider url='ws://localhost:3000/cable'>
+</ActionCableProvider>
+```
+
+Or custom cable:
 
 ```jsx
 import { ActionCableProvider } from 'react-actioncable-provider'
@@ -23,21 +37,56 @@ export default function Container (props) {
 }
 ```
 
-You can also use like below:
+## In some UI screen
 
-```
-<ActionCableProvider url='ws://localhost:3000/cable'>
-</ActionCableProvider>
+* Recommandation
+
+You can use ActionCable.
+
+```jsx
+import React, { Component, PropTypes } from 'react'
+import {ActionCable} from 'react-actioncable-provider'
+
+export default class ChatRoom extends Component {
+    state = {
+      messages: []
+    };
+
+    onReceived (message) {
+        this.setState({
+            messages: [
+                ...this.state.messages,
+                message
+            ]
+        })
+    }
+
+    sendMessage = () => {
+        const message = this.refs.newMessage.value
+        // Call perform or send
+        this.refs.roomChannel.perform('sendMessage', {message})
+    }
+
+    render () {
+        return (
+            <div>
+                <ActionCable ref='roomChannel' channel={{channel: 'RoomChannel', room: '3'}} onReceived{this.onReceived} />
+                <ul>
+                    {this.state.messages.map((message) =>
+                        <li key={message.id}>{message.body}</li>
+                    )}
+                </ul>
+                <input ref='newMessage' type='text' />
+                <button onClick={this.sendMssage}>Send</button>
+            </div>
+        )
+    }
+}
 ```
 
-Or connection with default endpoint:
+* No recommandation
 
-```
-<ActionCableProvider>
-</ActionCableProvider>
-```
-
-In some UI screen:
+You also can use this.context.cable to subscript channel, then you can receive or send data.
 
 ```jsx
 import React, { Component, PropTypes } from 'react'
