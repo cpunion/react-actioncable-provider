@@ -39,7 +39,7 @@ export default function Container (props) {
 
 ## In some UI screen
 
-* Recommandation
+* Recommendation
 
 You can use ActionCable.
 
@@ -84,7 +84,7 @@ export default class ChatRoom extends Component {
 }
 ```
 
-* No recommandation
+* No recommendation
 
 You also can use this.context.cable to subscript channel, then you can receive or send data.
 
