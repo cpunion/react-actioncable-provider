@@ -59,10 +59,13 @@ ActionCableProvider.childContextTypes = {
 
 var ActionCable = React.createClass({
   componentDidMount () {
-    const self = this
-    const {
-      onReceive, onInitialized, onConnected, onDisconnected, onRejected
-    } = this.props
+    var self = this;
+    var _props = this.props,
+        onReceived = _props.onReceived,
+        onInitialized = _props.onInitialized,
+        onConnected = _props.onConnected,
+        onDisconnected = _props.onDisconnected,
+        onRejected = _props.onRejected;
 
     this.cable = this.context.cable.subscriptions.create(
       this.props.channel,
@@ -115,7 +118,7 @@ var ActionCable = React.createClass({
 })
 
 ActionCable.propTypes = {
-  onReceive: React.PropTypes.func,
+  onReceived: React.PropTypes.func,
   onInitialized: React.PropTypes.func,
   onConnected: React.PropTypes.func,
   onDisconnected: React.PropTypes.func,
