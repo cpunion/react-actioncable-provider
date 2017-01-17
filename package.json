@@ -1,6 +1,6 @@
 {
   "name": "react-actioncable-provider",
-  "version": "0.0.6",
+  "version": "0.1.0",
   "description": "ActionCable Provider for React",
   "main": "index.js",
   "scripts": {
