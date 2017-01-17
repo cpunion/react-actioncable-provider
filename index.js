@@ -58,7 +58,7 @@ ActionCableProvider.childContextTypes = {
 }
 
 var ActionCable = React.createClass({
-  componentDidMount () {
+  componentDidMount: function () {
     var self = this;
     var _props = this.props,
         onReceived = _props.onReceived,
@@ -70,33 +70,33 @@ var ActionCable = React.createClass({
     this.cable = this.context.cable.subscriptions.create(
       this.props.channel,
       {
-        received (data) {
+        received: function (data) {
           onReceived && onReceived(data)
         },
-        initialized () {
+        initialized: function () {
           onInitialized && onInitialized()
         },
-        connected () {
+        connected: function () {
           onConnected && onConnected()
         },
-        disconnect () {
+        disconnect: function () {
           onDisconnected && onDisconnected()
         },
-        rejected () {
+        rejected: function () {
           onRejected && onRejected()
         }
       }
     )
   },
 
-  componentWillUnmount () {
+  componentWillUnmount: function () {
     if (this.cable) {
       this.context.cable.subscriptions.remove(this.cable)
       this.cable = null
     }
   },
 
-  send (data) {
+  send: function (data) {
     if (!this.cable) {
       throw new Error('ActionCable component unloaded')
     }
@@ -104,7 +104,7 @@ var ActionCable = React.createClass({
     this.cable.send(data)
   },
 
-  perform (action, data) {
+  perform: function (action, data) {
     if (!this.cable) {
       throw new Error('ActionCable component unloaded')
     }
