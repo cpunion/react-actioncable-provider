@@ -70,14 +70,14 @@ export default class ChatRoom extends Component {
     render () {
         return (
             <div>
-                <ActionCable ref='roomChannel' channel={{channel: 'RoomChannel', room: '3'}} onReceived{this.onReceived} />
+                <ActionCable ref='roomChannel' channel={{channel: 'RoomChannel', room: '3'}} onReceived={this.onReceived} />
                 <ul>
                     {this.state.messages.map((message) =>
                         <li key={message.id}>{message.body}</li>
                     )}
                 </ul>
                 <input ref='newMessage' type='text' />
-                <button onClick={this.sendMssage}>Send</button>
+                <button onClick={this.sendMessage}>Send</button>
             </div>
         )
     }
