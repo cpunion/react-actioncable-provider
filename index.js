@@ -47,6 +47,8 @@ var ActionCableProvider = React.createClass({
   }
 })
 
+ActionCableProvider.displayName = 'ActionCableProvider'
+
 ActionCableProvider.propTypes = {
   cable: React.PropTypes.object,
   url: React.PropTypes.string,
@@ -116,6 +118,8 @@ var ActionCable = React.createClass({
     return null
   }
 })
+
+ActionCable.displayName = 'ActionCable'
 
 ActionCable.propTypes = {
   onReceived: React.PropTypes.func,
