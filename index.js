@@ -5,9 +5,11 @@ Object.defineProperty(exports, "__esModule", {
 });
 
 var React = require('react')
+var PropTypes = require('prop-types')
 var actioncable = require('actioncable')
+var createReactClass = require('create-react-class')
 
-var ActionCableProvider = React.createClass({
+var ActionCableProvider = createReactClass({
   getChildContext: function () {
     return {
       cable: this.cable
@@ -50,16 +52,16 @@ var ActionCableProvider = React.createClass({
 ActionCableProvider.displayName = 'ActionCableProvider'
 
 ActionCableProvider.propTypes = {
-  cable: React.PropTypes.object,
-  url: React.PropTypes.string,
-  children: React.PropTypes.any
+  cable: PropTypes.object,
+  url: PropTypes.string,
+  children: PropTypes.any
 }
 
 ActionCableProvider.childContextTypes = {
-  cable: React.PropTypes.object.isRequired
+  cable: PropTypes.object.isRequired
 }
 
-var ActionCable = React.createClass({
+var ActionCable = createReactClass({
   componentDidMount: function () {
     var self = this;
     var _props = this.props,
@@ -122,14 +124,14 @@ var ActionCable = React.createClass({
 ActionCable.displayName = 'ActionCable'
 
 ActionCable.propTypes = {
-  onReceived: React.PropTypes.func,
-  onInitialized: React.PropTypes.func,
-  onConnected: React.PropTypes.func,
-  onDisconnected: React.PropTypes.func,
-  onRejected: React.PropTypes.func,
+  onReceived: PropTypes.func,
+  onInitialized: PropTypes.func,
+  onConnected: PropTypes.func,
+  onDisconnected: PropTypes.func,
+  onRejected: PropTypes.func,
 }
 ActionCable.contextTypes = {
-  cable: React.PropTypes.object.isRequired
+  cable: PropTypes.object.isRequired
 }
 
 exports.ActionCable = ActionCableProvider.ActionCable = ActionCable
