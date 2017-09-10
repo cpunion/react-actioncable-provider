@@ -21,6 +21,6 @@
   },
   "homepage": "https://github.com/cpunion/react-actioncable-provider#readme",
   "dependencies": {
-    "actioncable": "^5.0.0"
+    "actioncable": "^5.1.4"
   }
 }
