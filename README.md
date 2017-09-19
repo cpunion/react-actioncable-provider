@@ -120,3 +120,8 @@ export default class ChatRoom extends Component {
 # Use in React Native
 
 See https://github.com/cpunion/react-native-actioncable
+
+# Server Side Rendering
+
+See example at https://github.com/cpunion/react-actioncable-ssr-example
+
