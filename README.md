@@ -123,5 +123,7 @@ See https://github.com/cpunion/react-native-actioncable
 
 # Server Side Rendering
 
-See example at https://github.com/cpunion/react-actioncable-ssr-example
+See https://github.com/cpunion/react-actioncable-provider/issues/8
+
+Example: https://github.com/cpunion/react-actioncable-ssr-example
 
