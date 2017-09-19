@@ -117,7 +117,7 @@ var ActionCable = createReactClass({
   },
 
   render: function () {
-    return null
+    return this.props.children
   }
 })
 
@@ -129,6 +129,7 @@ ActionCable.propTypes = {
   onConnected: PropTypes.func,
   onDisconnected: PropTypes.func,
   onRejected: PropTypes.func,
+  children: PropTypes.any,
 }
 ActionCable.contextTypes = {
   cable: PropTypes.object.isRequired
