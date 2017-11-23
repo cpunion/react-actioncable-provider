@@ -4,7 +4,7 @@
   "description": "ActionCable Provider for React",
   "main": "lib/index.js",
   "scripts": {
-    "test": "jest",
+    "test": "jest --coverage",
     "test:watch": "jest --watch"
   },
   "repository": {
@@ -38,9 +38,11 @@
     "react-test-renderer": "^16.1.1"
   },
   "jest": {
+    "verbose": true,
     "collectCoverageFrom": [
-      "src/**/*.{js,jsx}"
+      "lib/**/*.{js,jsx}"
     ],
+    "coverageDirectory": "coverage",
     "setupFiles": [
       "<rootDir>/config/polyfills.js",
       "<rootDir>/config/setup.js"
