@@ -2,9 +2,10 @@
   "name": "react-actioncable-provider",
   "version": "1.0.1",
   "description": "ActionCable Provider for React",
-  "main": "index.js",
+  "main": "lib/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest --coverage",
+    "test:watch": "jest --watch"
   },
   "repository": {
     "type": "git",
@@ -22,6 +23,32 @@
   "homepage": "https://github.com/cpunion/react-actioncable-provider#readme",
   "dependencies": {
     "actioncable": "^5.0.0",
-    "react-create-class": "^1.0.0"
+    "create-react-class": "^15.6.2",
+    "prop-types": "^15.6.0",
+    "react": "^16.1.1"
+  },
+  "devDependencies": {
+    "babel-preset-env": "^1.6.1",
+    "babel-preset-react": "^6.24.1",
+    "chai": "^4.1.2",
+    "enzyme": "^3.2.0",
+    "enzyme-adapter-react-16": "^1.1.0",
+    "jest": "^21.2.1",
+    "react-dom": "^16.1.1",
+    "react-test-renderer": "^16.1.1"
+  },
+  "jest": {
+    "verbose": true,
+    "collectCoverageFrom": [
+      "lib/**/*.{js,jsx}"
+    ],
+    "coverageDirectory": "coverage",
+    "setupFiles": [
+      "<rootDir>/config/polyfills.js",
+      "<rootDir>/config/setup.js"
+    ],
+    "testPathIgnorePatterns": [
+      "<rootDir>/(build|docs|node_modules)/"
+    ]
   }
 }
