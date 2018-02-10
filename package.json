@@ -24,6 +24,7 @@
   "dependencies": {
     "actioncable": "^5.0.0",
     "create-react-class": "^15.6.2",
+    "lodash": "^4.17.5",
     "prop-types": "^15.6.0",
     "react": "^16.1.1"
   },
