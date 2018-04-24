@@ -1,38 +1,25 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import { expect } from 'chai';
-import Provider, { ActionCableProvider, ActionCable } from '../index';
+import ActionCableProvider, { cable } from '../index';
 
-test('ActionCable render without children', () => {
+test('Render wrapped component without children', () => {
+  const Wrapped = cable(<div />);
   const node = shallow(
     <ActionCableProvider>
-      <ActionCable />
+      <Wrapped />
     </ActionCableProvider>
   );
 
-  expect(node.find(ActionCable)).to.have.length(1);
-});
-
-test('ActionCable render with children', () => {
-  const node = shallow(
-    <ActionCableProvider>
-      <ActionCable>
-        <div>Hello</div>
-      </ActionCable>
-    </ActionCableProvider>
-  );
-
-  expect(node.find(ActionCable)).to.have.length(1);
-  const div = node.find('div')
-  expect(div).to.have.length(1);
+  expect(node.find(Wrapped)).to.have.length(1);
 });
 
 test('Default exporting ActionCableProvider works', () => {
   const node = shallow(
-    <Provider>
-      <ActionCable />
-    </Provider>
+    <ActionCableProvider>
+      <div />
+    </ActionCableProvider>
   );
 
-  expect(node.find(ActionCable)).to.have.length(1);
+  expect(node.find('div')).to.have.length(1);
 });
