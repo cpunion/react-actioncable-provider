@@ -14,7 +14,6 @@ export default function cable(WrappedComponent, options) {
         options.channel,
         {
           received: function (data) {
-            console.log('received data', data);
             WrappedComponent.prototype.onChannelReceived && WrappedComponent.prototype.onChannelReceived(data);
           },
           initialized: function () {
