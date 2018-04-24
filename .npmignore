@@ -3,5 +3,3 @@
 .npmignore
 /config/
 yarn.lock
-/lib/
-/es/
