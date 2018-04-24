@@ -15,18 +15,18 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/cpunion/react-actioncable-provider.git"
+    "url": "git+https://github.com/jediofthecode/react-actioncable-provider.git"
   },
   "keywords": [
     "ActionCable",
     "react"
   ],
-  "author": "Li Jie <cpunion@gmail.com>",
+  "author": "Li Jie <cpunion@gmail.com>, Patrick Johnson <patrick@jedioftheco.de>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/cpunion/react-actioncable-provider/issues"
+    "url": "https://github.com/jediofthecode/react-actioncable-provider/issues"
   },
-  "homepage": "https://github.com/cpunion/react-actioncable-provider#readme",
+  "homepage": "https://github.com/jediofthecode/react-actioncable-provider#readme",
   "dependencies": {
     "actioncable": "^5.0.0",
     "create-react-class": "^15.6.2",
