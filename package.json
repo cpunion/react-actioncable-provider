@@ -1,9 +1,15 @@
 {
   "name": "react-actioncable-provider",
-  "version": "1.0.3",
+  "version": "2.0.0",
   "description": "ActionCable Provider for React",
-  "main": "lib/index.js",
+  "main": "./lib/index.js",
+  "module": "./es/index.js",
+  "jsnext:main": "./es/index.js",
   "scripts": {
+    "build": "npm run build:lib && npm run build:es",
+    "build:lib": "babel src --out-dir lib --ignore __tests__",
+    "build:es": "cross-env BABEL_ENV=es babel src --out-dir es --ignore __tests__",
+    "install": "npm run build",
     "test": "jest --coverage",
     "test:watch": "jest --watch"
   },
@@ -25,16 +31,20 @@
     "actioncable": "^5.0.0",
     "create-react-class": "^15.6.2",
     "prop-types": "^15.6.0",
-    "react": "^16.1.1"
+    "react": "^16.3.2"
   },
   "devDependencies": {
+    "babel-core": "^6.26.0",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
     "babel-preset-env": "^1.6.1",
+    "babel-preset-es2015": "^6.24.1",
     "babel-preset-react": "^6.24.1",
     "chai": "^4.1.2",
+    "cross-env": "^5.1.4",
     "enzyme": "^3.2.0",
     "enzyme-adapter-react-16": "^1.1.0",
     "jest": "^21.2.1",
-    "react-dom": "^16.1.1",
+    "react-dom": "^16.3.2",
     "react-test-renderer": "^16.1.1"
   },
   "jest": {
