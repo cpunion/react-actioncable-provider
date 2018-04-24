@@ -1,6 +1,6 @@
 {
   "name": "react-actioncable-provider-next",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "ActionCable Provider for React",
   "main": "./lib/index.js",
   "module": "./es/index.js",
@@ -9,7 +9,7 @@
     "build": "npm run build:lib && npm run build:es",
     "build:lib": "babel src --out-dir lib --ignore __tests__",
     "build:es": "cross-env BABEL_ENV=es babel src --out-dir es --ignore __tests__",
-    "install": "npm run build",
+    "prepare": "npm run build",
     "test": "jest --coverage",
     "test:watch": "jest --watch"
   },
