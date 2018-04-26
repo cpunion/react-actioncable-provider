@@ -1,6 +1,6 @@
 {
-  "name": "react-actioncable-provider-next",
-  "version": "2.0.1",
+  "name": "react-actioncable-provider",
+  "version": "2.0.0",
   "description": "ActionCable Provider for React",
   "main": "./lib/index.js",
   "module": "./es/index.js",
@@ -15,18 +15,24 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/jediofthecode/react-actioncable-provider.git"
+    "url": "git+https://github.com/cpunion/react-actioncable-provider.git"
   },
   "keywords": [
     "ActionCable",
     "react"
   ],
-  "author": "Patrick Johnson <patrick@jedioftheco.de>",
+  "author": "Li Jie <cpunion@gmail.com>",
   "license": "MIT",
+  "contributors": [
+    {
+      "name": "Patrick Johnson",
+      "email": "patrick@jedioftheco.de"
+    }
+  ],
   "bugs": {
-    "url": "https://github.com/jediofthecode/react-actioncable-provider/issues"
+    "url": "https://github.com/cpunion/react-actioncable-provider/issues"
   },
-  "homepage": "https://github.com/jediofthecode/react-actioncable-provider#readme",
+  "homepage": "https://github.com/cpunion/react-actioncable-provider#readme",
   "dependencies": {
     "actioncable": "^5.0.0",
     "create-react-class": "^15.6.2",

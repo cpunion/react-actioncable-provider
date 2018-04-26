@@ -3,11 +3,6 @@ import PropTypes from 'prop-types';
 import actioncable from 'actioncable';
 
 class ActionCableProvider extends Component {
-  constructor(props) {
-    super(props);
-    this.displayName = 'ActionCableProvider';
-  }
-
   getChildContext() {
     return {
       cable: this.cable
@@ -15,11 +10,7 @@ class ActionCableProvider extends Component {
   }
 
   componentWillMount() {
-    if (this.props.cable) {
-      this.cable = this.props.cable;
-    } else {
-      this.cable = actioncable.createConsumer(this.props.url);
-    }
+    this.setupCable(this.props);
   }
 
   componentWillUnmount() {
@@ -39,7 +30,15 @@ class ActionCableProvider extends Component {
     this.componentWillUnmount();
 
     // create or assign cable
-    this.componentWillMount();
+    this.setupCable(nextProps);
+  }
+
+  setupCable(props) {
+    if (props.cable) {
+      this.cable = props.cable;
+    } else {
+      this.cable = actioncable.createConsumer(props.url);
+    }
   }
   
   render() {
@@ -56,5 +55,7 @@ ActionCableProvider.propTypes = {
 ActionCableProvider.childContextTypes = {
   cable: PropTypes.object.isRequired
 }
+
+ActionCableProvider.displayName = 'ActionCableProvider';
 
 export default ActionCableProvider;
