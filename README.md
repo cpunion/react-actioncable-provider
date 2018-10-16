@@ -1,129 +1,104 @@
-ActionCable Provider for React.
+# ActionCable Provider for React
 
-# Install
+This package provides an ActionCable context provider and consumer to allow you to subscribe to ActionCable channels in your React components.
 
-```
+## Requirements
+
+As this package uses React's new Context API, **React 16.3+ is required**.
+
+## Install
+
+```shell
 npm install --save react-actioncable-provider
+# OR
+yarn add react-actioncable-provider
 ```
 
-# Usage
+## Usage
 
-## In outer container:
+The public API exports two components that you'll use: `<ActionCableProvider />` and `<ActionCableConsumer />`.
 
-```
-<ActionCableProvider>
-</ActionCableProvider>
-```
+### `<ActionCableProvider />`
 
-You can also use following code to specify actioncable url:
+The provider is used in an outer container and wraps all of the components that may or may not consume the context. It accepts one of two props: `url` and `cable`. Passing `url` will result in the provider instantiating its own `ActionCable.Consumer` with that URL. Passing `cable` allows you to manually instantiate an `ActionCable.Consumer` on your own and pass it to the provider to be used by all descendent consumers.
 
-```
-<ActionCableProvider url='ws://localhost:3000/cable'>
-</ActionCableProvider>
-```
-
-Or custom cable:
+#### With `url`
 
 ```jsx
-import { ActionCableProvider } from 'react-actioncable-provider'
-const cable = ActionCable.createConsumer('ws://localhost:3000/cable')
+<ActionCableProvider url="ws://test.example.com/cable">...</ActionCableProvider>
+```
 
-export default function Container (props) {
+#### With `cable`
+
+```jsx
+import ActionCable from 'actioncable';
+
+const cable = ActionCable.createConsumer('ws://test.example.com/cable');
+
+<ActionCableProvider cable={cable}>...</ActionCableProvider>;
+```
+
+### `<ActionCableConsumer />`
+
+The consumer will wrap an individual component. It accepts several props:
+
+- `channel` [String] Name of the channel to which you want to subscribe.
+- `channel` [Object] An object with a `channel` key which denotes the channel to which you want to subscribe. All other keys are passed to the channel as params.
+- `onConnected` [Function] A handler function that is called when the channel connects.
+- `onDisconnected` [Function] A handler function that is called when the channel disconnects.
+- `onInitialized` [Function] A handler function that is called when the `ActionCable`.`Consumer` is initialized.
+- `onRejected` [Function] A handler function that is called when the requested subscription is rejected.
+- `onReceived` [Function] A handler function that is called when the channel transmits a message to the client.
+
+```jsx
+import React from 'react';
+import PropTypes from 'prop-types';
+import { ActionCableConsumer } from 'react-actioncable-provider';
+
+export default class Widget extends React.Component {
+  static propTypes = {
+    message: PropTypes.string
+  };
+
+  constructor(...props) {
+    super(...props);
+
+    this.handleReceived = this.handleReceived.bind(this);
+
+    this.state = {
+      message: ''
+    };
+  }
+
+  handleReceived(message) {
+    this.setState(state => {
+      return {
+        message
+      };
+    });
+  }
+
+  render() {
     return (
-        <ActionCableProvider cable={cable}>
-            <MyApp />
-        </ActionCableProvider>
-    )
+      <ActionCableConsumer
+        channel="WidgetChannel"
+        onReceived={this.handleReceived}
+      >
+        <h1>{this.state.message}</h1>
+      </ActionCableConsumer>
+    );
+  }
 }
 ```
 
-## In some UI screen
+## Other Uses
 
-* **Recommendation**
-
-You can use ActionCable.
-
-```jsx
-import React, { Component, PropTypes } from 'react'
-import {ActionCable} from 'react-actioncable-provider'
-
-export default class ChatRoom extends Component {
-    state = {
-      messages: []
-    };
-
-    onReceived (message) {
-        this.setState({
-            messages: [
-                ...this.state.messages,
-                message
-            ]
-        })
-    }
-
-    sendMessage = () => {
-        const message = this.refs.newMessage.value
-        // Call perform or send
-        this.refs.roomChannel.perform('sendMessage', {message})
-    }
-
-    render () {
-        return (
-            <div>
-                <ActionCable ref='roomChannel' channel={{channel: 'RoomChannel', room: '3'}} onReceived={this.onReceived} />
-                <ul>
-                    {this.state.messages.map((message) =>
-                        <li key={message.id}>{message.body}</li>
-                    )}
-                </ul>
-                <input ref='newMessage' type='text' />
-                <button onClick={this.sendMessage}>Send</button>
-            </div>
-        )
-    }
-}
-```
-
-* **No recommendation**
-
-You also can use this.context.cable to subscript channel, then you can receive or send data.
-
-```jsx
-import React, { Component, PropTypes } from 'react'
-import ActionCable from 'actioncable'
-
-export default class ChatRoom extends Component {
-    static contextTypes = {
-        cable: PropTypes.object.isRequired
-    };
-
-    componentDidMount () {
-        this.subscription = this.context.cable.subscriptions.create(
-            'ChatChannel',
-            {
-                received (data) {
-                    console.log(data)
-                }
-            }
-        )
-    }
-
-    componentWillUnmount () {
-        this.subscription &&
-            this.context.cable.subscriptions.remove(this.subscription)
-    }
-
-    // ... Other code
-}
-```
-
-# Use in React Native
+### React Native
 
 See https://github.com/cpunion/react-native-actioncable
 
-# Server Side Rendering
+### Server Side Rendering
 
 See https://github.com/cpunion/react-actioncable-provider/issues/8
 
 Example: https://github.com/cpunion/react-actioncable-ssr-example
-
