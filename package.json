@@ -1,6 +1,6 @@
 {
-  "name": "react-actioncable-provider",
-  "version": "2.0.0",
+  "name": "@thrash-industries/react-actioncable-provider",
+  "version": "2.0.1",
   "description": "ActionCable Provider for React",
   "main": "lib/index.js",
   "scripts": {
@@ -49,5 +49,8 @@
     "testPathIgnorePatterns": [
       "<rootDir>/(build|docs|node_modules)/"
     ]
+  },
+  "directories": {
+    "lib": "lib"
   }
 }

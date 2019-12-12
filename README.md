@@ -9,9 +9,9 @@ As this package uses React's new Context API, **React 16.3+ is required**.
 ## Install
 
 ```shell
-npm install --save react-actioncable-provider
+npm install --save @thrash-industries/react-actioncable-provider
 # OR
-yarn add react-actioncable-provider
+yarn add @thrash-industries/react-actioncable-provider
 ```
 
 ## Usage
@@ -31,9 +31,9 @@ The provider is used in an outer container and wraps all of the components that 
 #### With `cable`
 
 ```jsx
-import ActionCable from 'actioncable';
+import ActionCable from "actioncable";
 
-const cable = ActionCable.createConsumer('ws://test.example.com/cable');
+const cable = ActionCable.createConsumer("ws://test.example.com/cable");
 
 <ActionCableProvider cable={cable}>...</ActionCableProvider>;
 ```
@@ -51,9 +51,9 @@ The consumer will wrap an individual component. It accepts several props:
 - `onReceived` [Function] A handler function that is called when the channel transmits a message to the client.
 
 ```jsx
-import React from 'react';
-import PropTypes from 'prop-types';
-import { ActionCableConsumer } from 'react-actioncable-provider';
+import React from "react";
+import PropTypes from "prop-types";
+import { ActionCableConsumer } from "react-actioncable-provider";
 
 export default class Widget extends React.Component {
   static propTypes = {
@@ -66,7 +66,7 @@ export default class Widget extends React.Component {
     this.handleReceived = this.handleReceived.bind(this);
 
     this.state = {
-      message: ''
+      message: ""
     };
   }
 
