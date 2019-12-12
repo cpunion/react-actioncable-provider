@@ -53,7 +53,7 @@ The consumer will wrap an individual component. It accepts several props:
 ```jsx
 import React from "react";
 import PropTypes from "prop-types";
-import { ActionCableConsumer } from "react-actioncable-provider";
+import { ActionCableConsumer } from "@thrash-industries/react-actioncable-provider";
 
 export default class Widget extends React.Component {
   static propTypes = {
