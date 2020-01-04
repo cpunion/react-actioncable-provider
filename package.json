@@ -29,7 +29,7 @@
     "actioncable": "^5.0.0",
     "create-react-class": "^15.6.2",
     "prop-types": "^15.6.0",
-    "react": "~16.3.0"
+    "react": "^16.9.0"
   },
   "devDependencies": {
     "@babel/cli": "^7.7.7",
@@ -41,8 +41,8 @@
     "enzyme": "^3.7.0",
     "enzyme-adapter-react-16": "^1.1.0",
     "jest": "^24.9.0",
-    "react-dom": "^16.3.0",
-    "react-test-renderer": "^16.3.0"
+    "react-dom": "^16.9.0",
+    "react-test-renderer": "^16.9.0"
   },
   "jest": {
     "verbose": true,
