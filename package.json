@@ -17,6 +17,9 @@
     "react"
   ],
   "author": "Li Jie <cpunion@gmail.com>",
+  "contributors": [
+    "Jack Howard <jackhowaa@gmail.com>"
+  ],
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/cpunion/react-actioncable-provider/issues"
