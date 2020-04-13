@@ -1,6 +1,6 @@
 {
   "name": "@thrash-industries/react-actioncable-provider",
-  "version": "2.0.2",
+  "version": "2.0.3",
   "description": "ActionCable Provider for React",
   "main": "dist/index.js",
   "scripts": {
@@ -10,7 +10,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/cpunion/react-actioncable-provider.git"
+    "url": "git+https://github.com/JackHowa/react-actioncable-provider"
   },
   "keywords": [
     "ActionCable",
@@ -22,9 +22,9 @@
   ],
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/cpunion/react-actioncable-provider/issues"
+    "url": "https://github.com/JackHowa/react-actioncable-provider/issues"
   },
-  "homepage": "https://github.com/cpunion/react-actioncable-provider#readme",
+  "homepage": "https://github.com/JackHowa/react-actioncable-provider",
   "dependencies": {
     "actioncable": "^5.0.0",
     "create-react-class": "^15.6.2",
