@@ -123,31 +123,31 @@ ActionCableController.propTypes = {
   onRejected: PropTypes.func,
   children: PropTypes.any
 };
-var ActionCableConsumer = React.forwardRef(function (props, ref) {
-  var Component = createReactClass({
-    displayName: "Component",
-    render: function render() {
-      var _this = this;
+var Component = createReactClass({
+  displayName: "Component",
+  render: function render() {
+    var _this = this;
 
-      return React.createElement(Consumer, null, function (_ref) {
-        var cable = _ref.cable;
-        return React.createElement(ActionCableController, _objectSpread({
-          cable: cable
-        }, _this.props, {
-          ref: _this.props.forwardedRef
-        }), _this.props.children || null);
-      });
-    }
-  });
-  Component.displayName = "ActionCableConsumer";
-  Component.propTypes = {
-    onReceived: PropTypes.func,
-    onInitialized: PropTypes.func,
-    onConnected: PropTypes.func,
-    onDisconnected: PropTypes.func,
-    onRejected: PropTypes.func,
-    children: PropTypes.any
-  };
+    return React.createElement(Consumer, null, function (_ref) {
+      var cable = _ref.cable;
+      return React.createElement(ActionCableController, _objectSpread({
+        cable: cable
+      }, _this.props, {
+        ref: _this.props.forwardedRef
+      }), _this.props.children || null);
+    });
+  }
+});
+Component.displayName = "ActionCableConsumer";
+Component.propTypes = {
+  onReceived: PropTypes.func,
+  onInitialized: PropTypes.func,
+  onConnected: PropTypes.func,
+  onDisconnected: PropTypes.func,
+  onRejected: PropTypes.func,
+  children: PropTypes.any
+};
+var ActionCableConsumer = React.forwardRef(function (props, ref) {
   return React.createElement(Component, _objectSpread({}, props, {
     forwardedRef: ref
   }), props.children || null);
