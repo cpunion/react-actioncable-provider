@@ -64,6 +64,9 @@ ActionCableProvider.propTypes = {
 var ActionCableController = createReactClass({
   displayName: "ActionCableController",
   componentDidMount: function componentDidMount() {
+    this.connectToChannel();
+  },
+  connectToChannel: function connectToChannel() {
     var self = this;
     var _props = this.props;
     var onReceived = _props.onReceived;
@@ -89,11 +92,20 @@ var ActionCableController = createReactClass({
       }
     });
   },
-  componentWillUnmount: function componentWillUnmount() {
+  disconnectFromChannel: function disconnectFromChannel() {
     if (this.cable) {
       this.props.cable.subscriptions.remove(this.cable);
       this.cable = null;
     }
+  },
+  componentDidUpdate: function componentDidUpdate(prevProps) {
+    if (JSON.stringify(prevProps.channel) !== JSON.stringify(this.props.channel)) {
+      this.disconnectFromChannel();
+      this.connectToChannel();
+    }
+  },
+  componentWillUnmount: function componentWillUnmount() {
+    this.disconnectFromChannel();
   },
   send: function send(data) {
     if (!this.cable) {
