@@ -16,6 +16,9 @@
     "ActionCable",
     "react"
   ],
+  "files": [
+    "dist/index.js"
+  ],
   "author": "Li Jie <cpunion@gmail.com>",
   "contributors": [
     "Jack Howard <jackhowaa@gmail.com>"
