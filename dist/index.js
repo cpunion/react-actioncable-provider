@@ -142,9 +142,9 @@ var Component = createReactClass({
 
     return React.createElement(Consumer, null, function (_ref) {
       var cable = _ref.cable;
-      return React.createElement(ActionCableController, _objectSpread({
+      return React.createElement(ActionCableController, _objectSpread(_objectSpread({
         cable: cable
-      }, _this.props, {
+      }, _this.props), {}, {
         ref: _this.props.forwardedRef
       }), _this.props.children || null);
     });
@@ -160,7 +160,7 @@ Component.propTypes = {
   children: PropTypes.any
 };
 var ActionCableConsumer = React.forwardRef(function (props, ref) {
-  return React.createElement(Component, _objectSpread({}, props, {
+  return React.createElement(Component, _objectSpread(_objectSpread({}, props), {}, {
     forwardedRef: ref
   }), props.children || null);
 });
