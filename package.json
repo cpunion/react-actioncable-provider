@@ -14,7 +14,9 @@
   },
   "keywords": [
     "ActionCable",
-    "react"
+    "react",
+    "Rails",
+    "WebSockets"
   ],
   "files": [
     "dist/index.js"
