@@ -1385,10 +1385,10 @@ acorn@^7.1.1:
   resolved "https://registry.yarnpkg.com/acorn/-/acorn-7.4.1.tgz#feaed255973d2e77555b83dbc08851a6c63520fa"
   integrity sha512-nQyp0o1/mNdbTO1PO6kHkwSrmgZ0MT/jCCpNiwbUjGoRN4dlBhqJtoQuCnEOKzgTVwg0ZWiCoQy6SxMebQVh8A==
 
-actioncable@^5.0.0:
-  version "5.2.4"
-  resolved "https://registry.yarnpkg.com/actioncable/-/actioncable-5.2.4.tgz#744f555f16d87413044f81074a9cc4d2cf416502"
-  integrity sha512-2mCP0eKTjxtDWNPqP6xPar9a5i8F/pndrTHJGU6QDS1a77B+DlPEWzPRiyNAaNEGMY/9yTBOP3CXhR+8/zaVQw==
+actioncable@^5.2.5:
+  version "5.2.5"
+  resolved "https://registry.yarnpkg.com/actioncable/-/actioncable-5.2.5.tgz#f099d8f4253df241fc5648cffca80e031782c0b1"
+  integrity sha512-xG063yBA28TgArnnN580vveA+oOLpf97uk/NjWhoZe7PW+0ti/BuJFEo0+HIf3eRz2HPIUMIcAV2h2xPp/ewqQ==
 
 airbnb-prop-types@^2.16.0:
   version "2.16.0"
