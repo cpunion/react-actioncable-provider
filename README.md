@@ -93,6 +93,13 @@ export default class Widget extends React.Component {
 }
 ```
 
+## Publishing 
+
+- `yarn` Install dependencies
+- `yarn test` Run tests
+- `yarn build` Build for production
+- `npm version [patch|minor|major]` Increment version
+- `npm publish` Publish to npm
 ## Other Uses
 
 ### React Native
