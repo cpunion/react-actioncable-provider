@@ -1,0 +1,19 @@
+name: Test commit on push and pr
+
+on: [push, pull_request]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout branch
+        uses: actions/checkout@v2
+      
+      - name: Install 
+        run: yarn 
+
+      - name: Test
+        run: yarn test
+
+      
+      
